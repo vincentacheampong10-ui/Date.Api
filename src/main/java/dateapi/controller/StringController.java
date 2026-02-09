@@ -9,11 +9,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class StringController {
 
     @GetMapping("/reverse")
-    public GetString reverseString(@RequestParam String text) {
+    public String reverseString(@RequestParam String text) {
         try {
-             return new GetString(text);
+            return new GetString(text).getReversed();
         } catch (Exception e) {
-            return new GetString( "error: unable to reverse string");
+            return "error: unable to reverse string";
         }
+    }
+        @GetMapping("/opposite")
+        public String oppositeString(@RequestParam String text) {
+            try {
+                return new GetString(text).getOpposite();
+            } catch (Exception e) {
+                return "error: unable to reverse string";
+            }
     }
 }
